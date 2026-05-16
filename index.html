@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>Мои финансы</title>
+  </head>
+  <body class="body">
+    <header class="site-header">
+      <h1 class="header-logo">Мои финансы</h1>
+      <button class="logout">Выйти</button>
+    </header>
+    <main>
+    <div class="cards">
+      <div class="main-card">
+        <b>Баланс</b>
+        <p>Текущий баланс</p>
+      </div>
+      <div class="main-card">
+        <b>Доходы</b>
+        <p>Текущие доходы</p>
+      </div>
+      <div class="main-card">
+        <b>Расходы</b>
+        <p>Текущий расходы</p>
+      </div>
+    </div>
+     <section class="trans">
+      <div class="trans-container">
+        <h1 class="trans__title">Список транзакций</h1>
+        <form class="trans__form">
+          <select name="type">
+            <option value="" disabled selected hidden>Выберете тип...</option>
+            <option value="food">Доход</option>
+            <option value="car">Расход</option>
+          </select>
+          <input
+            class="trans__input"
+            name="sum"
+            placeholder="Введите сумму"
+          />
+          <select name="category">
+            <option value="" disabled selected hidden>Выберете категорию...</option>
+            <option value="food">Еда</option>
+            <option value="car">Транспорт</option>
+            <option value="activity">Развлечения</option>
+            <option value="study">Учеба</option>
+            <option value="other">Другое</option>
+          </select>
+          <input type="date" id="date" name="date">
+          <button class="trans__submit">Добавить</button>
+        </form>
+        <ul class="trans__list"></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Команда хахакеры | 2026</p>
+      </div>
+    </footer>
+    <template id="trans__item-template">
+      <li class="trans_item">
+        <span class="date__item-text"></span>
+        <span class="category__item-text"></span>
+        <span class="sum__item-text"></span>
+        <button class="trans__item-button" aria-label="Удалить"></button>
+      </li>
+    </template>
+    <script src="scripts/trans.js" defer></script>
+  </body>
