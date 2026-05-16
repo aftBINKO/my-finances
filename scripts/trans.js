@@ -77,7 +77,7 @@ function listTrans() {
         }
 
         const deleteBtn = clone.querySelector('.trans__item-button');
-        deleteBtn.textContent = 'крестик';
+        deleteBtn.textContent = 'удалить';
         deleteBtn.addEventListener('click', () => deleteTrans(item.id));
 
         listContainer.appendChild(clone);
