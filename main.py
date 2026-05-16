@@ -1,11 +1,10 @@
 from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.responses import FileResponse
-from sqlalchemy.testing.pickleable import User
 from starlette import status
 
 from database import Session, engine
 from sqlalchemy.orm import Session
-# from .models import User
+from models import UserDB
 # from .database import SessionLocal
 
 from passlib.context import CryptContext
@@ -33,9 +32,11 @@ def register_ok(data = Body()):
     phone = data["phone"]
     password = data["password"]
     with Session(autoflush=False, bind=engine) as session:
-        new_user = User()
+        new_user = UserDB()
         new_user.phone = phone
-        new_user.password = get_password_hash(password)
+        new_user.hashed_password = get_password_hash(password)
+        session.add(new_user)
+        session.commit()
     return {"status": status.HTTP_201_CREATED, "data": new_user}
 
 
