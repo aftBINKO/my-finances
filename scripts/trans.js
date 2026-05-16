@@ -24,11 +24,6 @@ let transss = loadTrans();
 function addTrans(event) {
     event.preventDefault();
 
-    if (!summaInput.value || !categoryInput.value || !typeInput.value) {
-        alert('Эти поля обязательные');
-        return;
-    }
-
     const selectedDate = dateInput.value 
 
     const transssObj = {
@@ -66,7 +61,7 @@ function listTrans() {
         clone.querySelector('.category__item-text').textContent = categoryTitles[item.category] || item.category;
         
         const sumTextNode = clone.querySelector('.sum__item-text');
-        if (item.type === 'food') {
+        if (item.type === 'income') {
             sumTextNode.textContent = `+${item.summa} ₽`;
             sumTextNode.style.color = 'green';
         } else {
@@ -97,7 +92,7 @@ function updateDashboard() {
     let totalExpense = 0;
 
     transss.forEach(item => {
-        if (item.type === 'food') {
+        if (item.type === 'income') {
             totalIncome += item.summa;
         } else {
             totalExpense += item.summa;
