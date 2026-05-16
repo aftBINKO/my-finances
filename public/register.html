@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>METANIT.COM</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="message"></div>
+     <p>
+        Введите телефон: <br />
+        <input name="userphone" id="userphone" />
+    </p>
+     <p>
+        Введите пароль: <br />
+        <input name="userpass" id="userpass" />
+    </p>
+    <button onclick="send()">Отправить</button>
+<script>
+    async function send(){
+
+        // получаем введеное в поле имя и возраст
+        const userphone = document.getElementById("userphone").value;
+        const userpass = document.getElementById("userpass").value;
+
+        // отправляем запрос
+        const response = await fetch("/register_ok", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    phone: userphone,
+                    password: userpass
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById("message").textContent = data.message;
+            }
+            else
+                console.log(response);
+    }
+</script>
+</body>
+</html>
