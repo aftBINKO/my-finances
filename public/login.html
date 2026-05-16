@@ -23,7 +23,7 @@
         const userpass = document.getElementById("userpass").value;
 
         // отправляем запрос
-        const response = await fetch("/register/", {
+        const response = await fetch("/login/", {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
