@@ -30,8 +30,6 @@ function addTrans(event) {
     }
 
     const selectedDate = dateInput.value 
-        ? new Date(dateInput.value).toLocaleDateString('ru-RU') 
-        : new Date().toLocaleDateString('ru-RU');
 
     const transssObj = {
         id: Date.now(), 
